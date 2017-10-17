@@ -1,0 +1,14 @@
+{
+    "name": "marekstodolny/mu",
+    "type": "project",
+    "require": {
+        "symfony/console": "^3.3",
+        "dusank/knapsack": "^10.0",
+        "larapack/dd": "^1.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Mu\\": "src/"
+        }
+    }
+}
