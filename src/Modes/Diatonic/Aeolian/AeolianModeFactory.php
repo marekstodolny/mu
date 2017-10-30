@@ -9,7 +9,7 @@ use Mu\Modes\AbstractModeFactory;
 
 class AeolianModeFactory extends AbstractModeFactory
 {
-    protected $intervals = [0, 1, 1.5, 2.5, 3.5, 4, 5, 6];
+    protected $intervals = [0, 2, 3, 5, 7, 8, 10, 12];
 
     public function create(): AbstractMode
     {

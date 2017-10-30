@@ -9,7 +9,7 @@ use Mu\Modes\AbstractModeFactory;
 
 class IonianModeFactory extends AbstractModeFactory
 {
-    protected $intervals = [0, 1, 2, 2.5, 3.5, 4.5, 5.5, 6];
+    protected $intervals = [0, 2, 4, 5, 7, 9, 11, 12];
 
     public function create(): AbstractMode
     {
