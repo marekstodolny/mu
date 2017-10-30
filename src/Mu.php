@@ -4,6 +4,9 @@
 namespace Mu;
 
 
+use Mu\Naming\German;
+use Mu\Naming\Naming;
+
 class Mu
 {
     /**
@@ -23,7 +26,9 @@ class Mu
         }
 
         if (!$config instanceof Config) {
-            $config = new Config();
+            $naming = new Naming();
+            $alternativeNamings = [new German()];
+            $config = new Config($naming, $alternativeNamings);
         }
 
         $this->tuning = $tuning;

@@ -4,36 +4,37 @@
 namespace Mu;
 
 
+use Mu\Naming\Naming;
+
 class Config
 {
-    /**
-     * Array containing note names starting from C
-     * Every note has a key equal to amount of semitones from base C.
-     *
-     * This only supports 12-note system.
-     *
-     * @var array
-     */
-    private $notes = [
-        'C',
-        'C#',
-        'D',
-        'D#',
-        'E',
-        'F',
-        'F#',
-        'G',
-        'G#',
-        'A',
-        'A#',
-        'B'
-    ];
+    /** @var Naming */
+    private $defaultNaming;
+
+    /** @var Naming[] */
+    private $namings;
+
+    public function __construct(Naming $naming, array $namings = [])
+    {
+        $this->defaultNaming = $naming;
+
+        array_unshift($namings, $naming);
+        $this->namings = $namings;
+    }
 
     /**
-     * @return array
+     * @return Naming
      */
-    public function getNotes(): array
+    public function getDefaultNaming(): Naming
     {
-        return $this->notes;
+        return $this->defaultNaming;
+    }
+
+    /**
+     * @return Naming[]
+     */
+    public function getNamings(): array
+    {
+        return $this->namings;
     }
 }

@@ -11,6 +11,7 @@ use Mu\Exceptions\NoteNotFoundException;
 use Mu\Intervals\IntervalFactory;
 use Mu\Modes\AbstractModeFactory;
 use Mu\Notes\Note;
+use Mu\Notes\NoteResolver;
 use Mu\Scales\Scale;
 use Mu\Scales\ScaleFactory;
 
@@ -75,10 +76,18 @@ class ScaleBuilder
      */
     public function setRootByName(string $name): ScaleBuilder
     {
-        $notes = $this->config->getNotes();
+        $noteResolver = new NoteResolver($this->config->getNamings());
 
-        if (($baseSemitone = array_search($name, $notes, true)) !== false) {
-            $note = new Note($name, $baseSemitone);
+//        if (($baseSemitone = array_search($name, $notes, true)) !== false) {
+//            $note = new Note($name, $baseSemitone);
+//            $this->setRoot($note);
+//        } else {
+//            throw new NoteNotFoundException($name);
+//        }
+
+        $note = $noteResolver->resolve($name);
+
+        if ($note instanceof Note) {
             $this->setRoot($note);
         } else {
             throw new NoteNotFoundException($name);

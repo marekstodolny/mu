@@ -37,7 +37,7 @@ class ScaleFactory
             $semitonesFromRoot = $rootBaseSemitone + $interval->getSemitones();
             $baseSemitone = $semitonesFromRoot % 12;
 
-            $notes[] = new Note($this->config->getNotes()[$baseSemitone], $baseSemitone);
+            $notes[] = new Note($this->config->getDefaultNaming()->getNotes()[$baseSemitone], $baseSemitone);
         }
 
         return new NoteCollection($notes);
