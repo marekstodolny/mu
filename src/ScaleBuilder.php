@@ -77,15 +77,7 @@ class ScaleBuilder
     public function setRootByName(string $name): ScaleBuilder
     {
         $noteResolver = new NoteResolver($this->config->getNamings());
-
-//        if (($baseSemitone = array_search($name, $notes, true)) !== false) {
-//            $note = new Note($name, $baseSemitone);
-//            $this->setRoot($note);
-//        } else {
-//            throw new NoteNotFoundException($name);
-//        }
-
-        $note = $noteResolver->resolve($name);
+        $note = $noteResolver->resolveNote($name);
 
         if ($note instanceof Note) {
             $this->setRoot($note);
